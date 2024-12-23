@@ -3,7 +3,7 @@ import React from 'react';
 const AllServices = () => {
     return (
         <div>
-            all services
+            All services here
         </div>
     );
 };
