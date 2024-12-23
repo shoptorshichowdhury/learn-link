@@ -8,7 +8,7 @@ export default {
         roboto: ["Roboto", "serif"],
       },
       colors: {
-        primary: "#1E3A8A",
+        primary: "#11245A",
         secondary: "#38BDF8",
         accent: "#FACC15",
       },

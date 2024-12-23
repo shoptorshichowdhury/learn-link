@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import "./Navbar.css";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navbar = () => {
   const menuLinks = (
@@ -9,7 +10,7 @@ const Navbar = () => {
         <NavLink to={`/`}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/services"}>Services</NavLink>
+        <NavLink to={"/allServices"}>Services</NavLink>
       </li>
     </>
   );
@@ -88,7 +89,7 @@ const Navbar = () => {
             role="button"
             className="btn btn-sm btn-ghost text-white md:text-lg font-normal"
           >
-            Dashboard
+            Dashboard <IoIosArrowDown />
           </div>
           <ul
             tabIndex={0}
@@ -102,8 +103,8 @@ const Navbar = () => {
       {/* navbar end */}
       <div className="flex items-center gap-8 text-white">
         <div>
-          <button className="btn btn-sm lg:btn-md lg:text-base bg-accent text-primary border-transparent hover:bg-transparent hover:border-accent hover:text-accent">
-            Logout
+          <button className="btn btn-sm lg:btn-md lg:text-base bg-secondary text-primary border-transparent hover:bg-transparent hover:border-secondary hover:text-secondary">
+            Login
           </button>
         </div>
       </div>
