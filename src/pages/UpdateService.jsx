@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
 import background from "../assets/addServiceBackground.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const UpdateService = () => {
   const { id } = useParams();
   const [service, setService] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchService = async () => {
@@ -17,8 +20,37 @@ const UpdateService = () => {
     fetchService();
   }, [id]);
 
-  const { _id, image, name, price, area, description, serviceProvider } =
-    service;
+  const { image, name, price, area, description, serviceProvider } = service;
+
+  //handle update service data
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const image = form.image.value;
+    const name = form.name.value;
+    const price = parseInt(form.price.value);
+    const area = form.area.value;
+    const description = form.description.value;
+
+    const serviceData = {
+      image,
+      name,
+      price,
+      area,
+      description,
+    };
+
+    try {
+      axios.put(
+        `${import.meta.env.VITE_API_URL}/update-service/${id}`,
+        serviceData
+      );
+      toast.success("Course Data update Successfully!");
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <div className="bg-primary/10">
@@ -47,7 +79,7 @@ const UpdateService = () => {
             </h3>
             <div className="divider"></div>
           </div>
-          <form className="card-body p-0">
+          <form onSubmit={handleSubmit} className="card-body p-0">
             {/* service image */}
             <div className="form-control">
               <label className="label">
@@ -55,6 +87,7 @@ const UpdateService = () => {
               </label>
               <input
                 type="url"
+                defaultValue={image}
                 placeholder="course image URL"
                 name="image"
                 className="input input-bordered"
@@ -69,6 +102,7 @@ const UpdateService = () => {
               <input
                 type="text"
                 placeholder="course name"
+                defaultValue={name}
                 name="name"
                 className="input input-bordered"
                 required
@@ -81,7 +115,8 @@ const UpdateService = () => {
               </label>
               <input
                 type="number"
-                placeholder="course name"
+                placeholder="course price"
+                defaultValue={price}
                 name="price"
                 className="input input-bordered"
                 required
@@ -95,6 +130,7 @@ const UpdateService = () => {
               <input
                 type="text"
                 placeholder="service area"
+                defaultValue={area}
                 name="area"
                 className="input input-bordered"
                 required
@@ -107,6 +143,7 @@ const UpdateService = () => {
               </label>
               <textarea
                 placeholder="description"
+                defaultValue={description}
                 name="description"
                 required
                 className="textarea textarea-bordered textarea-lg w-full"
@@ -114,7 +151,7 @@ const UpdateService = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-secondary text-primary text-sm md:text-base hover:bg-transparent border border-transparent hover:border-primary">
-                Add Course
+                Update Course
               </button>
             </div>
           </form>
