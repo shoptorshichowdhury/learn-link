@@ -57,11 +57,11 @@ const ManageServiceCard = () => {
         {/* action buttons  */}
         <div className="flex  gap-5 justify-start md:justify-end">
           {/* update button */}
-          <div>
+          <Link to={`/updateService`}>
             <button className="btn btn-sm md:btn-md btn-success md:text-base">
               <MdSystemUpdate className="text-primary" /> Update
             </button>
-          </div>
+          </Link>
           {/* delete button */}
           <div>
             <button className="btn btn-sm md:btn-md btn-error md:text-base">

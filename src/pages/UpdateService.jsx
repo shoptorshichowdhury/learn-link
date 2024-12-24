@@ -1,6 +1,6 @@
 import background from "../assets/addServiceBackground.svg";
 
-const AddService = () => {
+const UpdateService = () => {
   return (
     <div className="bg-primary/10">
       <div
@@ -9,7 +9,7 @@ const AddService = () => {
       >
         <div className="flex flex-col justify-center items-center h-[150px] md:h-[300px] space-y-3 py-3">
           <h3 className="text-2xl md:text-4xl lg:text-7xl text-center font-poppins text-secondary font-medium">
-            Add a Course
+            Update Your Course
           </h3>
           <p className="text-white font-light text-xs md:text-base w-3/5 mx-auto text-center">
             Share your knowledge with the world! Add your course to our platform
@@ -105,4 +105,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default UpdateService;
