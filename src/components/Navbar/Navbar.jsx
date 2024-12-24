@@ -18,7 +18,7 @@ const Navbar = () => {
   const dashboardMenuLinks = (
     <>
       <li>
-        <a>Add Service</a>
+        <NavLink to={`/addService`}>Add Service</NavLink>
       </li>
       <li>
         <a>Manage Service</a>
@@ -103,7 +103,7 @@ const Navbar = () => {
       {/* navbar end */}
       <div className="flex items-center gap-8 text-white">
         <div>
-          <button className="btn btn-sm lg:btn-md lg:text-base bg-secondary text-primary border-transparent hover:bg-transparent hover:border-secondary hover:text-secondary">
+          <button className="btn btn-sm lg:btn-md lg:text-base bg-primary text-secondary border-transparent hover:bg-transparent hover:border-primary hover:text-primary">
             Login
           </button>
         </div>
