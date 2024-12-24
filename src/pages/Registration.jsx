@@ -147,7 +147,7 @@ const Registration = () => {
               onClick={handleGoogleSignIn}
               className="btn w-full text-base"
             >
-              <FcGoogle className="text-xl" /> Register with Google
+              <FcGoogle className="text-lg md:text-xl" /> Register with Google
             </button>
           </div>
         </div>
