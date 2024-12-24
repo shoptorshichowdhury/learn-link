@@ -7,11 +7,11 @@ const AddService = () => {
         style={{ backgroundImage: `url(${background})` }}
         className="bg-no-repeat bg-cover bg-right-bottom"
       >
-        <div className="flex flex-col justify-center items-center h-32 md:h-[300px] space-y-3">
+        <div className="flex flex-col justify-center items-center h-[150px] md:h-[300px] space-y-3 py-3">
           <h3 className="text-2xl md:text-4xl lg:text-7xl text-center font-poppins text-secondary font-medium">
             Add a Course
           </h3>
-          <p className="text-white font-light text-sm md:text-base w-3/5 mx-auto text-center">
+          <p className="text-white font-light text-xs md:text-base w-3/5 mx-auto text-center">
             Share your knowledge with the world! Add your course to our platform
             and help learners achieve their goals while expanding your reach as
             an educator.
