@@ -5,6 +5,7 @@ import AllServices from "../pages/AllServices";
 import AddService from "../pages/AddService";
 import SingleServiceDetails from "../pages/SingleServiceDetails";
 import BookService from "../pages/BookService";
+import ManageService from "../pages/ManageService";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/manageService",
-        element: <BookService />,
+        element: <ManageService />,
       },
     ],
   },
