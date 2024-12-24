@@ -3,6 +3,8 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import AllServices from "../pages/AllServices";
 import AddService from "../pages/AddService";
+import SingleServiceDetails from "../pages/SingleServiceDetails";
+import BookService from "../pages/BookService";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "/addService",
         element: <AddService />,
+      },
+      {
+        path: "/services/id",
+        element: <SingleServiceDetails />,
+      },
+      {
+        path: "/bookService/id",
+        element: <BookService />,
       },
     ],
   },

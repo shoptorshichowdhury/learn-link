@@ -1,4 +1,4 @@
-import background from "../assets/background1.svg";
+import background from "../assets/addServiceBackground.svg";
 
 const AddService = () => {
   return (

@@ -1,5 +1,6 @@
 import demoImg from "../../assets/banner/class.jpg";
 import buyerImg from "../../assets/banner/banner1.png";
+import { Link } from "react-router-dom";
 
 const PopularServiceCard = () => {
   return (
@@ -40,11 +41,11 @@ const PopularServiceCard = () => {
           </div>
 
           {/* view details button */}
-          <div>
+          <Link to={`/services/id`}>
             <button className="btn bg-secondary border-transparent hover:bg-transparent hover:border-secondary hover:text-secondary">
               View Details
             </button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
