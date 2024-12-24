@@ -116,10 +116,19 @@ const Navbar = () => {
           </Link>
         )}
         {user && (
-          <div>
-            <button onClick={logOut} className="btn btn-warning">
-              Logout
-            </button>
+          <div
+            title="logout"
+            onClick={logOut}
+            className="h-9 w-9 md:h-12 md:w-12 rounded-full cursor-pointer"
+          >
+            {user && (
+              <img
+                className="w-full h-full object-cover rounded-full"
+                referrerPolicy="no-referrer"
+                src={user?.photoURL}
+                alt=""
+              />
+            )}
           </div>
         )}
       </div>
