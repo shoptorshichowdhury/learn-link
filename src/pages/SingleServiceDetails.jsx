@@ -2,9 +2,26 @@ import background from "../assets/allservicesBackground.png";
 import detailsImg from "../assets/details.png";
 import serviceImg from "../assets/serviceCardDemo.jpg";
 import buyerImg from "../assets/banner/banner1.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SingleServiceDetails = () => {
+  const { id } = useParams();
+  const [service, setService] = useState([]);
+
+  useEffect(() => {
+    const fetchService = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/services/${id}`
+      );
+      setService(data);
+    };
+    fetchService();
+  }, []);
+
+  const { _id, image, name, price, area, description, serviceProvider } = service;
+
   return (
     <section>
       {/* header part */}
@@ -39,46 +56,36 @@ const SingleServiceDetails = () => {
           <div className="overflow-hidden h-[200px] md:h-[450px]">
             <img
               className="w-full h-full object-cover rounded-lg"
-              src={serviceImg}
+              src={image}
               alt="service-image"
             />
           </div>
           {/* details content */}
           <div className="space-y-5">
             <h3 className="text-xl md:text-4xl font-poppins text-primary font-semibold">
-              Frontend Development
+              {name}
             </h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam
-              repudiandae, illum vel vero eius officiis quaerat hic, ut
-              recusandae at dolores velit sunt rerum molestiae tenetur dolorum
-              quia adipisci similique?Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Error hic ducimus ullam labore, fuga, facilis
-              laboriosam aliquid ad, quod odio maxime architecto doloremque id
-              velit porro neque atque rerum aspernatur! Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Dolore numquam saepe iusto
-              dolorem perspiciatis aut blanditiis accusamus vitae illo.
-            </p>
+            <p>{description}</p>
             <div className="flex items-center gap-5">
               <p className="text-primary font-medium">Course Provider:</p>
               <div className="flex items-center gap-5 bg-secondary/10 w-max px-2 md:px-4 py-1 rounded-lg">
                 <div className="w-12 h-12 rounded-full">
                   <img
                     className="w-full h-full object-cover rounded-full border border-secondary"
-                    src={buyerImg}
+                    src={serviceProvider?.photo}
                     alt="provider"
                   />
                 </div>
-                <p>John Smith</p>
+                <p>{serviceProvider?.name}</p>
               </div>
             </div>
             <div className="flex items-center gap-5">
               <p className="text-primary font-medium">Course Location:</p>
-              <div>Baridhara, Dhaka</div>
+              <div>{area}</div>
             </div>
             <div className="flex items-center gap-10">
-              <p className="text-primary font-bold text-lg">Price: $100</p>
-              <Link to={`/bookService/id`}>
+              <p className="text-primary font-bold text-lg">Price: ${price}</p>
+              <Link to={`/bookService/${_id}`}>
                 <button className="btn bg-primary text-secondary hover:bg-secondary hover:text-primary">
                   Book Now
                 </button>

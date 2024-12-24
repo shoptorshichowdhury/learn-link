@@ -1,6 +1,27 @@
+import { useContext, useEffect, useState } from "react";
 import background from "../assets/addServiceBackground.svg";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const BookService = () => {
+  const { id } = useParams();
+  const [service, setService] = useState([]);
+  const {user} = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchService = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/services/${id}`
+      );
+      setService(data);
+    };
+    fetchService();
+  }, []);
+
+  const { _id, image, name, price, area, description, serviceProvider } =
+    service;
+
   return (
     <div className="bg-primary/10">
       <div
@@ -35,10 +56,11 @@ const BookService = () => {
                 <span className="label-text">Course ID</span>
               </label>
               <input
-                type="number"
-                placeholder="course ID"
+                type="text"
+                defaultValue={_id}
+                disabled={true}
                 name="courseId"
-                className="input input-bordered"
+                className="input input-bordered text-primary font-bold"
                 required
               />
             </div>
@@ -49,9 +71,10 @@ const BookService = () => {
               </label>
               <input
                 type="url"
-                placeholder="course image URL"
+                defaultValue={image}
+                disabled={true}
                 name="image"
-                className="input input-bordered"
+                className="input input-bordered text-pretty font-bold"
                 required
               />
             </div>
@@ -62,9 +85,10 @@ const BookService = () => {
               </label>
               <input
                 type="text"
-                placeholder="course name"
+                defaultValue={name}
+                disabled={true}
                 name="name"
-                className="input input-bordered"
+                className="input input-bordered text-pretty font-bold"
                 required
               />
             </div>
@@ -75,9 +99,10 @@ const BookService = () => {
               </label>
               <input
                 type="email"
-                placeholder="course provider email"
+                defaultValue={serviceProvider?.email}
+                disabled={true}
                 name="provider_email"
-                className="input input-bordered"
+                className="input input-bordered text-pretty font-bold"
                 required
               />
             </div>
@@ -88,9 +113,10 @@ const BookService = () => {
               </label>
               <input
                 type="text"
-                placeholder="course Provider Name"
+                defaultValue={serviceProvider?.name}
+                disabled={true}
                 name="provider_name"
-                className="input input-bordered"
+                className="input input-bordered text-pretty font-bold"
                 required
               />
             </div>
@@ -101,9 +127,10 @@ const BookService = () => {
               </label>
               <input
                 type="email"
-                placeholder="current user email"
+                defaultValue={user?.email}
+                disabled={true}
                 name="user_email"
-                className="input input-bordered"
+                className="input input-bordered text-pretty font-bold"
                 required
               />
             </div>
@@ -114,9 +141,10 @@ const BookService = () => {
               </label>
               <input
                 type="text"
-                placeholder="Current User Name"
+                defaultValue={user?.displayName}
                 name="user_name"
-                className="input input-bordered"
+                className="input input-bordered text-primary font-bold"
+                disabled={true}
                 required
               />
             </div>
@@ -153,9 +181,10 @@ const BookService = () => {
               </label>
               <input
                 type="number"
-                placeholder="course name"
+                defaultValue={price}
+                disabled={true}
                 name="price"
-                className="input input-bordered"
+                className="input input-bordered text-primary font-bold"
                 required
               />
             </div>

@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/services/id",
+        path: "/services/:id",
         element: (
           <PrivateRoute>
             <SingleServiceDetails />
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/bookService/id",
+        path: "/bookService/:id",
         element: (
           <PrivateRoute>
             <BookService />

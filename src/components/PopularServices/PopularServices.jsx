@@ -1,8 +1,22 @@
 import { FaArrowRight, FaBook } from "react-icons/fa6";
 import PopularServiceCard from "../PopularServiceCard/PopularServiceCard";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const PopularServices = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/popularServices`
+      );
+      setServices(data);
+    };
+    fetchAllServices();
+  }, []);
+
   return (
     <div className="w-11/12 mx-auto py-10 md:py-40 space-y-5 md:space-y-14">
       {/* top section */}
@@ -28,12 +42,9 @@ const PopularServices = () => {
 
       {/* popular course container  */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <PopularServiceCard />
-        <PopularServiceCard />
-        <PopularServiceCard />
-        <PopularServiceCard />
-        <PopularServiceCard />
-        <PopularServiceCard />
+        {services.map((service) => (
+          <PopularServiceCard key={service._id} service={service} />
+        ))}
       </div>
     </div>
   );

@@ -1,8 +1,22 @@
 import background from "../assets/allservicesBackground.png";
 import courseIcon from "../assets/allServiceIcon.png";
 import ServiceCard from "../components/ServiceCard/ServiceCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AllServices = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/services`
+      );
+      setServices(data);
+    };
+    fetchAllServices();
+  }, []);
+
   return (
     <section>
       {/* header part */}
@@ -31,11 +45,16 @@ const AllServices = () => {
       </div>
 
       {/* all services container */}
-      <div className="w-11/12 mx-auto py-12 space-y-5 md:space-y-8">
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
+      <div className="w-11/12 mx-auto py-12">
+        <h3 className="text-xl md:text-3xl font-poppins font-medium text-primary pl-4 border-l-4 border-secondary">
+          Total Jobs: {services.length}
+        </h3>
+        {/* all servics here */}
+        <div className="space-y-5 md:space-y-8 my-12">
+          {services.map((service) => (
+            <ServiceCard key={service._id} service={service} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,48 @@
+import { useContext } from "react";
 import background from "../assets/addServiceBackground.svg";
+import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddService = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const image = form.image.value;
+    const name = form.name.value;
+    const price = parseInt(form.price.value);
+    const area = form.area.value;
+    const description = form.description.value;
+
+    const serviceData = {
+      image,
+      name,
+      price,
+      area,
+      description,
+      serviceProvider: {
+        name: user?.displayName,
+        email: user?.email,
+        photo: user?.photoURL,
+      },
+    };
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/services`,
+        serviceData
+      );
+      toast.success("Course Added Successfully!");
+      form.reset();
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
+
   return (
     <div className="bg-primary/10">
       <div
@@ -28,7 +70,7 @@ const AddService = () => {
             </h3>
             <div className="divider"></div>
           </div>
-          <form className="card-body p-0">
+          <form onSubmit={handleSubmit} className="card-body p-0">
             {/* service image */}
             <div className="form-control">
               <label className="label">
