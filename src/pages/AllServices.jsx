@@ -47,7 +47,7 @@ const AllServices = () => {
       {/* all services container */}
       <div className="w-11/12 mx-auto py-12">
         <h3 className="text-xl md:text-3xl font-poppins font-medium text-primary pl-4 border-l-4 border-secondary">
-          Total Jobs: {services.length}
+          Total Course: {services.length}
         </h3>
         {/* all servics here */}
         <div className="space-y-5 md:space-y-8 my-12">

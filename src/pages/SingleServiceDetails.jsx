@@ -18,7 +18,7 @@ const SingleServiceDetails = () => {
       setService(data);
     };
     fetchService();
-  }, []);
+  }, [id]);
 
   const { _id, image, name, price, area, description, serviceProvider } = service;
 

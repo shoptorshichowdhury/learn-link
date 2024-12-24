@@ -1,6 +1,25 @@
+import { useParams } from "react-router-dom";
 import background from "../assets/addServiceBackground.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const UpdateService = () => {
+  const { id } = useParams();
+  const [service, setService] = useState([]);
+
+  useEffect(() => {
+    const fetchService = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/services/${id}`
+      );
+      setService(data);
+    };
+    fetchService();
+  }, [id]);
+
+  const { _id, image, name, price, area, description, serviceProvider } =
+    service;
+
   return (
     <div className="bg-primary/10">
       <div

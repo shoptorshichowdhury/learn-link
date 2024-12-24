@@ -30,9 +30,11 @@ const ServiceCard = ({ service }) => {
         </div>
         <div className="space-y-3 md:space-y-5">
           <h4 className="text-2xl text-primary font-semibold">{name}</h4>
-          <p className="text-sm md:text-base text-primary">
-            {description.substring(0, 100)}
-          </p>
+          {description && (
+            <p className="text-sm md:text-base text-primary">
+              {description.substring(0, 100)}
+            </p>
+          )}
           <Link to={`/services/${_id}`}>
             <button className="btn btn-link text-primary text-base font-medium p-0">
               View Details <FaLocationArrow className="" />

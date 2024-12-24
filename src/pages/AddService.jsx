@@ -31,10 +31,7 @@ const AddService = () => {
     };
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/services`,
-        serviceData
-      );
+      await axios.post(`${import.meta.env.VITE_API_URL}/services`, serviceData);
       toast.success("Course Added Successfully!");
       form.reset();
     } catch (err) {

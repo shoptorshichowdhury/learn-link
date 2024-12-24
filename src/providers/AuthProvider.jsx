@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
 
   //update user profile
   const updateUserProfile = (name, photo) => {
-    setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
@@ -47,10 +46,8 @@ const AuthProvider = ({ children }) => {
 
   //logout user
   const logOut = () => {
-    setLoading(true);
     return signOut(auth);
-  }
-
+  };
 
   //observer
   useEffect(() => {
@@ -72,7 +69,7 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     googleSignIn,
     loginUser,
-    logOut
+    logOut,
   };
 
   return (

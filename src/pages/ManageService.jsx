@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import courseIcon from "../assets/allServiceIcon.png";
 import background from "../assets/allservicesBackground.png";
 import ManageServiceCard from "../components/ManageServiceCard/ManageServiceCard";
 import axios from "axios";
+import { AuthContext } from "../providers/AuthProvider";
 
 const ManageService = () => {
   const [services, setServices] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchAllServices = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/my-added-services/:email`
+        `${import.meta.env.VITE_API_URL}/my-added-services/${user?.email}`
       );
       setServices(data);
     };
     fetchAllServices();
-  }, []);
+  }, [user]);
 
   return (
     <section>
@@ -45,11 +47,14 @@ const ManageService = () => {
       </div>
 
       {/* manage service container */}
-      <div className="my-12">
-        <div className="w-11/12 mx-auto space-y-8 md:space-y-10">
-          <ManageServiceCard />
-          <ManageServiceCard />
-          <ManageServiceCard />
+      <div className="my-12 w-11/12 mx-auto ">
+        <h3 className="text-xl md:text-3xl font-poppins font-medium my-8 pl-4 border-l-4 border-secondary">
+          My Added course: {services.length}
+        </h3>
+        <div className="space-y-8 md:space-y-10">
+          {services.map((service) => (
+            <ManageServiceCard key={service._id} service={service} />
+          ))}
         </div>
       </div>
     </section>
