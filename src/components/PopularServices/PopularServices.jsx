@@ -20,8 +20,8 @@ const PopularServices = () => {
         </div>
         {/* view all button */}
         <Link to={`/allServices`}>
-          <button className="btn bg-primary text-secondary hover:bg-transparent hover:text-primary border-transparent hover:border-primary md:text-base text-sm">
-            View All <FaArrowRight></FaArrowRight>
+          <button className="btn bg-secondary text-primary hover:bg-transparent hover:text-primary border-transparent hover:border-primary md:text-base text-sm">
+            Show All <FaArrowRight></FaArrowRight>
           </button>
         </Link>
       </div>

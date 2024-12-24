@@ -21,7 +21,7 @@ const AddService = () => {
 
       {/* form section */}
       <div className="w-11/12 mx-auto py-12 lg:py-20">
-        <div className="card w-full h-full border border-primary/40 px-8 py-4 lg:py-8 shadow-xl">
+        <div className="card w-full h-full px-8 py-4 lg:py-8 shadow-xl bg-white">
           <div>
             <h3 className="text-3xl font-poppins my-5 font-medium">
               Course Details:

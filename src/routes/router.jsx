@@ -8,6 +8,9 @@ import BookService from "../pages/BookService";
 import ManageService from "../pages/ManageService";
 import UpdateService from "../pages/UpdateService";
 import AllBookedServices from "../pages/AllBookedServices";
+import Login from "../pages/Login";
+import Registration from "../pages/Registration";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,28 +27,60 @@ const router = createBrowserRouter([
         element: <AllServices />,
       },
       {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+      {
         path: "/addService",
-        element: <AddService />,
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/services/id",
-        element: <SingleServiceDetails />,
+        element: (
+          <PrivateRoute>
+            <SingleServiceDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/bookService/id",
-        element: <BookService />,
+        element: (
+          <PrivateRoute>
+            <BookService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manageService",
-        element: <ManageService />,
+        element: (
+          <PrivateRoute>
+            <ManageService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateService",
-        element: <UpdateService />,
+        element: (
+          <PrivateRoute>
+            <UpdateService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/allBookedServices",
-        element: <AllBookedServices />,
+        element: (
+          <PrivateRoute>
+            <AllBookedServices />
+          </PrivateRoute>
+        ),
       },
     ],
   },

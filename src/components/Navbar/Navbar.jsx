@@ -1,9 +1,13 @@
+import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
-import "./Navbar.css";
 import { IoIosArrowDown } from "react-icons/io";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const menuLinks = (
     <>
       <li>
@@ -83,30 +87,41 @@ const Navbar = () => {
           </ul>
         </div>
         {/* dashboard dropdown menu*/}
-        <div className="dropdown">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-sm btn-ghost text-white md:text-lg font-normal"
-          >
-            Dashboard <IoIosArrowDown />
+        {user && (
+          <div className="dropdown">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-sm btn-ghost text-white md:text-lg font-normal"
+            >
+              Dashboard <IoIosArrowDown />
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 w-max rounded-box z-[1] mt-3 p-2 lg:px-4 shadow"
+            >
+              {dashboardMenuLinks}
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 w-max rounded-box z-[1] mt-3 p-2 lg:px-4 shadow"
-          >
-            {dashboardMenuLinks}
-          </ul>
-        </div>
+        )}
       </div>
 
       {/* navbar end */}
       <div className="flex items-center gap-8 text-white">
-        <div>
-          <button className="btn btn-sm lg:btn-md lg:text-base bg-primary text-secondary border-transparent hover:bg-transparent hover:border-primary hover:text-primary">
-            Login
-          </button>
-        </div>
+        {!user && (
+          <Link to={`/login`}>
+            <button className="btn btn-sm lg:btn-md lg:text-base bg-primary text-secondary border-transparent hover:bg-transparent hover:border-primary hover:text-primary">
+              Login
+            </button>
+          </Link>
+        )}
+        {user && (
+          <div>
+            <button onClick={logOut} className="btn btn-warning">
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
