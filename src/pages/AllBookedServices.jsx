@@ -1,8 +1,24 @@
 import background from "../assets/allservicesBackground.png";
 import courseIcon from "../assets/allServiceIcon.png";
-import ServiceCard from "../components/ServiceCard/ServiceCard";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../providers/AuthProvider";
+import BookedCard from "../components/BookedCard/BookedCard";
 
 const AllBookedServices = () => {
+  const [services, setServices] = useState([]);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/bookedServices/${user?.email}`
+      );
+      setServices(data);
+    };
+    fetchAllServices();
+  }, [user]);
+
   return (
     <section>
       {/* header part */}
@@ -31,9 +47,13 @@ const AllBookedServices = () => {
       </div>
 
       {/* all services container */}
-      <div className="w-11/12 mx-auto py-12 space-y-5 md:space-y-8">
-        <ServiceCard />
-        <ServiceCard />
+      <div className="w-11/12 mx-auto py-12">
+        <h3 className="text-xl md:text-3xl font-poppins font-medium my-8 pl-4 border-l-4 border-secondary">Total Booked Course: {services.length}</h3>
+        <div className="space-y-5 md:space-y-8 my-12">
+          {services.map((service) => (
+            <BookedCard key={service._id} service={service} />
+          ))}
+        </div>
       </div>
     </section>
   );
