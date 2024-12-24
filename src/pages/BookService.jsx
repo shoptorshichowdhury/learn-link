@@ -3,11 +3,15 @@ import background from "../assets/addServiceBackground.svg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import toast from "react-hot-toast";
 
 const BookService = () => {
   const { id } = useParams();
   const [service, setService] = useState([]);
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     const fetchService = async () => {
@@ -19,8 +23,53 @@ const BookService = () => {
     fetchService();
   }, []);
 
-  const { _id, image, name, price, area, description, serviceProvider } =
-    service;
+  const { _id, image, name, price, serviceProvider } = service;
+
+  //handle submit for booking service
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const serviceId = form.serviceId.value;
+    const serviceImage = form.image.value;
+    const serviceName = form.name.value;
+    const provider = {
+      email: form.provider_email.value,
+      name: form.provider_name.value,
+    };
+    const user = {
+      email: form.user_email.value,
+      name: form.user_name.value,
+    };
+    const bookedDate = startDate;
+    const instruction = form.instruction.value;
+    const price = parseInt(form.price.value);
+
+    const serviceData = {
+      serviceId,
+      serviceImage,
+      serviceName,
+      provider,
+      user,
+      bookedDate,
+      instruction,
+      price,
+      serviceStatus: "pending",
+    };
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/bookedServices`,
+        serviceData
+      );
+      toast.success("Course Purchase Successfull!");
+      console.log(data);
+      form.reset();
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
 
   return (
     <div className="bg-primary/10">
@@ -49,7 +98,7 @@ const BookService = () => {
             </h3>
             <div className="divider"></div>
           </div>
-          <form className="card-body p-0">
+          <form onSubmit={handleSubmit} className="card-body p-0">
             {/* service id */}
             <div className="form-control">
               <label className="label">
@@ -59,7 +108,7 @@ const BookService = () => {
                 type="text"
                 defaultValue={_id}
                 disabled={true}
-                name="courseId"
+                name="serviceId"
                 className="input input-bordered text-primary font-bold"
                 required
               />
@@ -153,12 +202,10 @@ const BookService = () => {
               <label className="label">
                 <span className="label-text">Service Taking Date</span>
               </label>
-              <input
-                type="date"
-                placeholder="service taking date"
-                name="taking_date"
-                className="input input-bordered"
-                required
+              <DatePicker
+                className="input input-bordered w-full"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
               />
             </div>
             {/* special instruction */}

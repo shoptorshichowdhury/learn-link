@@ -1,9 +1,22 @@
+import { useEffect, useState } from "react";
 import courseIcon from "../assets/allServiceIcon.png";
 import background from "../assets/allservicesBackground.png";
 import ManageServiceCard from "../components/ManageServiceCard/ManageServiceCard";
-import ServiceCard from "../components/ServiceCard/ServiceCard";
+import axios from "axios";
 
 const ManageService = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/my-added-services/:email`
+      );
+      setServices(data);
+    };
+    fetchAllServices();
+  }, []);
+
   return (
     <section>
       {/* header part */}
@@ -34,9 +47,9 @@ const ManageService = () => {
       {/* manage service container */}
       <div className="my-12">
         <div className="w-11/12 mx-auto space-y-8 md:space-y-10">
-          <ManageServiceCard/>
-          <ManageServiceCard/>
-          <ManageServiceCard/>
+          <ManageServiceCard />
+          <ManageServiceCard />
+          <ManageServiceCard />
         </div>
       </div>
     </section>
