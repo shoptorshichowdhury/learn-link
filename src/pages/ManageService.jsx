@@ -4,20 +4,63 @@ import background from "../assets/allservicesBackground.png";
 import ManageServiceCard from "../components/ManageServiceCard/ManageServiceCard";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const ManageService = () => {
   const [services, setServices] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const fetchAllServices = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/my-added-services/${user?.email}`
-      );
-      setServices(data);
-    };
     fetchAllServices();
   }, [user]);
+
+  const fetchAllServices = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/my-added-services/${user?.email}`
+    );
+    setServices(data);
+  };
+
+  //handle delete btn
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/service/${id}`);
+      toast.success("Course Deleted Successfully!!!");
+      fetchAllServices();
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+
+  //modern toast delete button
+  const modernDelete = (id) => {
+    toast((t) => (
+      <div className="flex items-center gap-3">
+        <div>
+          <p>
+            Are you <b>sure?</b>
+          </p>
+        </div>
+        <div className="space-x-2">
+          <button
+            className="bg-red-400 text-white px-3 py-1 rounded-md"
+            onClick={() => {
+              toast.dismiss(t.id);
+              handleDelete(id);
+            }}
+          >
+            Yes
+          </button>
+          <button
+            className="bg-green-400 text-white px-3 py-1 rounded-md"
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ));
+  };
 
   return (
     <section>
@@ -53,7 +96,11 @@ const ManageService = () => {
         </h3>
         <div className="space-y-8 md:space-y-10">
           {services.map((service) => (
-            <ManageServiceCard key={service._id} service={service} />
+            <ManageServiceCard
+              modernDelete={modernDelete}
+              key={service._id}
+              service={service}
+            />
           ))}
         </div>
       </div>

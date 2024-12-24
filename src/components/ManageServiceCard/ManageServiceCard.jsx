@@ -1,14 +1,14 @@
-import serviceCardImg from "../../assets/serviceCardDemo.jpg";
-import buyerImg from "../../assets/banner/banner1.png";
 import { FaLocationArrow } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdSystemUpdate } from "react-icons/md";
 
-const ManageServiceCard = ({ service }) => {
+
+const ManageServiceCard = ({ service, modernDelete }) => {
   const { _id, image, name, price, area, description, serviceProvider } =
     service || {};
 
+ 
   return (
     <div className="flex flex-col md:flex-row gap-3 border bg-secondary/10 rounded-lg shadow-md">
       {/* service image */}
@@ -64,7 +64,10 @@ const ManageServiceCard = ({ service }) => {
           </Link>
           {/* delete button */}
           <div>
-            <button className="btn btn-sm md:btn-md btn-error md:text-base">
+            <button
+              onClick={() => modernDelete(_id)}
+              className="btn btn-sm md:btn-md btn-error md:text-base"
+            >
               <RiDeleteBin6Line className="text-primary" /> Delete
             </button>
           </div>
