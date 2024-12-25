@@ -1,7 +1,7 @@
 const InstructorCard = ({ image, name, course }) => {
   return (
     <div className="h-[500px] overflow-hidden">
-      <div className="card glass bg-accent/70 h-full overflow-hidden">
+      <div className="card glass h-full overflow-hidden">
         <figure>
           <img
             className="w-full h-full object-cover object-center"
@@ -9,7 +9,7 @@ const InstructorCard = ({ image, name, course }) => {
             alt="instructor image"
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body bg-accent/70">
           <h2 className="text-xl md:text-2xl font-poppins font-bold text-primary">{name}</h2>
           <p className="text-lg">Course: {course}</p>
         </div>
