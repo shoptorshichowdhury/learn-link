@@ -40,7 +40,7 @@ const OurInstructors = () => {
       <div className="h-[550px] my-12">
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={50}
           freeMode={true}
           loop={true}
           autoplay={{

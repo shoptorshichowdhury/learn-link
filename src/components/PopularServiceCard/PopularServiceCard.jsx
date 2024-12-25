@@ -7,7 +7,7 @@ const PopularServiceCard = ({ service }) => {
     service || {};
 
   return (
-    <div className="p-4 border bg-primary flex flex-col md:flex-row items-center gap-5 rounded-xl text-white">
+    <div className="p-4 bg-gradient-to-r from-secondary/30 to-primary/20 flex flex-col md:flex-row items-center gap-5 rounded-xl text-white shadow-md">
       {/* service image */}
       <div className="md:w-2/5 h-full">
         <img
@@ -20,13 +20,13 @@ const PopularServiceCard = ({ service }) => {
       {/* service content */}
       <div className="md:w-3/5 space-y-8">
         {/* 1st part */}
-        <div className="space-y-4">
-          <p className="font-poppins text-xl md:text-2xl text-secondary font-medium">
+        <div className="space-y-3">
+          <p className="font-poppins text-xl md:text-2xl text-primary font-semibold">
             {name}
           </p>
-          <p className="text-sm font-light">{description.substring(0, 100)}</p>
+          <p className="text-sm font-base text-primary">{description.substring(0, 100)}</p>
           {/* price  */}
-          <p className="font-poppins text-accent font-medium text-base md:text-lg">
+          <p className="font-poppins text-primary font-medium text-base md:text-lg">
             Price: ${price}
           </p>
         </div>
@@ -36,13 +36,13 @@ const PopularServiceCard = ({ service }) => {
           <div className="flex items-center gap-1 md:gap-2 bg-secondary/10 w-max px-2 md:px-4 py-1 rounded-lg">
             <div className="w-12 h-12 rounded-full">
               <img
-              referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover rounded-full border border-secondary"
                 src={serviceProvider?.photo}
                 alt=""
               />
             </div>
-            <p className="text-sm">{serviceProvider?.name}</p>
+            <p className="text-sm text-primary font-medium">{serviceProvider?.name}</p>
           </div>
 
           {/* view details button */}

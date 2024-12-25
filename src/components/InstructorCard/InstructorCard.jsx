@@ -9,7 +9,7 @@ const InstructorCard = ({ image, name, course }) => {
             alt="instructor image"
           />
         </figure>
-        <div className="card-body bg-accent/70">
+        <div className="card-body bg-gradient-to-r from-secondary/30 to-accent/20">
           <h2 className="text-xl md:text-2xl font-poppins font-bold text-primary">{name}</h2>
           <p className="text-lg">Course: {course}</p>
         </div>

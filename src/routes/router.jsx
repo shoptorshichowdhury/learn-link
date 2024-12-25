@@ -11,6 +11,7 @@ import AllBookedServices from "../pages/AllBookedServices";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import PrivateRoute from "./PrivateRoute";
+import ServiceToDo from "../pages/ServiceToDo";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AllBookedServices />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/serviceToDo",
+        element: (
+          <PrivateRoute>
+            <ServiceToDo />
           </PrivateRoute>
         ),
       },

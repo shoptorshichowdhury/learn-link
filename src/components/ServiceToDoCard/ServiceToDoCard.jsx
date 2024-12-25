@@ -1,19 +1,37 @@
-import { FaLocationArrow } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import { format } from "date-fns";
+import toast from "react-hot-toast";
 
-const BookedCard = ({ service }) => {
+const ServiceToDoCard = ({ service }) => {
   const {
-    serviceId,
+    _id,
     serviceImage,
     serviceName,
-    provider,
     user,
     bookedDate,
     instruction,
     price,
     serviceStatus,
   } = service || {};
+
+  //handle status change
+  const handleStatusChange = async (e, id) => {
+    const statusData = {
+      serviceStatus: e.target.value,
+    };
+
+    try {
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/service-to-do/${id}`,
+        statusData
+      );
+      toast.success("Course Status update successfull!");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
+
   return (
     <div>
       {service && (
@@ -36,9 +54,17 @@ const BookedCard = ({ service }) => {
               <div className="text-primary font-poppins text-xl lg:text-2xl font-bold">
                 Price: ${price}
               </div>
-              <div className="badge border border-yellow-500 p-3 bg-yellow-100 text-sm font-poppins font-medium">
-                {serviceStatus}
-              </div>
+              {/* service status */}
+              <select
+                onChange={(e) => handleStatusChange(e, _id)}
+                defaultValue={serviceStatus || "Course Status"}
+                className="select select-bordered select-sm w-full max-w-40 bg-accent/20 border-accent"
+              >
+                <option disabled>Course Status</option>
+                <option>Pending</option>
+                <option>Working</option>
+                <option>Completed</option>
+              </select>
             </div>
             <div className="space-y-3 md:space-y-5">
               <h4 className="text-2xl text-primary font-semibold">
@@ -51,9 +77,10 @@ const BookedCard = ({ service }) => {
             </div>
             {/* service provider details */}
             <div className="flex items-center gap-1 bg-secondary/10 w-max px-2 md:px-4 py-1 rounded-lg">
-              <p>{provider?.name}</p>
+              <p className="font-medium">Student:</p>
+              <p>{user?.name}</p>
               <div className="w-[3px] h-4 bg-primary mx-2"></div>
-              <p>{provider?.email}</p>
+              <p>{user?.email}</p>
             </div>
           </div>
         </div>
@@ -62,4 +89,4 @@ const BookedCard = ({ service }) => {
   );
 };
 
-export default BookedCard;
+export default ServiceToDoCard;
