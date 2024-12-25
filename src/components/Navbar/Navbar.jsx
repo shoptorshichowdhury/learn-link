@@ -4,6 +4,8 @@ import logo from "../../assets/logo/logo.png";
 import { IoIosArrowDown } from "react-icons/io";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import DarkMode from "../DarkMood/DarkMode"
+
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -108,6 +110,7 @@ const Navbar = () => {
 
       {/* navbar end */}
       <div className="flex items-center gap-8 text-white">
+        <DarkMode/>
         {!user && (
           <Link to={`/login`}>
             <button className="btn btn-sm lg:btn-md lg:text-base bg-primary text-secondary border-transparent hover:bg-transparent hover:border-primary hover:text-primary">

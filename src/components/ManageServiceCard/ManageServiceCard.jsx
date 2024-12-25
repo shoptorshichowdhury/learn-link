@@ -10,7 +10,7 @@ const ManageServiceCard = ({ service, modernDelete }) => {
 
  
   return (
-    <div className="flex flex-col md:flex-row gap-3 border bg-secondary/10 rounded-lg shadow-md">
+    <div className="flex flex-col md:flex-row gap-3 bg-secondary/15 rounded-lg shadow-md">
       {/* service image */}
       <div className="md:w-1/2 overflow-hidden">
         <img
@@ -49,7 +49,7 @@ const ManageServiceCard = ({ service, modernDelete }) => {
             <img
               className="w-full h-full object-cover rounded-full border border-secondary"
               src={serviceProvider?.photo}
-              alt="buyer"
+              alt="provider"
             />
           </div>
           <p>{serviceProvider?.name}</p>

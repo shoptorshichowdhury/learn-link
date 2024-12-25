@@ -8,7 +8,7 @@ const ServiceCard = ({ service }) => {
   return (
     <div>
       {service && (
-        <div className="flex flex-col md:flex-row gap-3 border bg-secondary/10 rounded-lg shadow-md">
+        <div className="flex flex-col md:flex-row gap-3 border bg-secondary/10 rounded-lg shadow-md border-none">
           {/* service image */}
           <div className="md:w-1/2 lg:w-2/5 overflow-hidden">
             <img

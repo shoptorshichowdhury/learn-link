@@ -35,7 +35,7 @@ const ServiceToDoCard = ({ service }) => {
   return (
     <div>
       {service && (
-        <div className="flex flex-col md:flex-row gap-3 border bg-secondary/10 rounded-lg shadow-md">
+        <div className="flex flex-col md:flex-row gap-3 bg-secondary/10 rounded-lg shadow-md">
           {/* service image */}
           <div className="md:w-1/2 lg:w-2/5 overflow-hidden">
             <img
@@ -58,7 +58,7 @@ const ServiceToDoCard = ({ service }) => {
               <select
                 onChange={(e) => handleStatusChange(e, _id)}
                 defaultValue={serviceStatus || "Course Status"}
-                className="select select-bordered select-sm w-full max-w-40 bg-accent/20 border-accent"
+                className="select select-sm w-full max-w-40  border-accent/65 text-bgColor bg-accent"
               >
                 <option disabled>Course Status</option>
                 <option>Pending</option>
@@ -76,10 +76,10 @@ const ServiceToDoCard = ({ service }) => {
               </p>
             </div>
             {/* service provider details */}
-            <div className="flex items-center gap-1 bg-secondary/10 w-max px-2 md:px-4 py-1 rounded-lg">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-1 bg-secondary/10 w-max px-3 md:px-4 py-1 rounded-lg">
               <p className="font-medium">Student:</p>
               <p>{user?.name}</p>
-              <div className="w-[3px] h-4 bg-primary mx-2"></div>
+              <div className="w-[3px] h-4 bg-primary mx-2 hidden lg:block"></div>
               <p>{user?.email}</p>
             </div>
           </div>

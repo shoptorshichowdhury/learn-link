@@ -29,8 +29,8 @@ const SingleServiceDetails = () => {
       <PageTitle title={`Learn Link | Service Details`} />
       {/* header part */}
       <div
-        className="h-[130px] md:h-[300px] bg-no-repeat bg-cover bg-top overflow-hidden"
-        style={{ backgroundImage: `url(${background})` }}
+        className="h-[130px] md:h-[300px] overflow-hidden bg-secondary/20"
+        
       >
         <div className="w-11/12 mx-auto flex items-center justify-between py-3 md:py-8">
           <div className="w-1/2 md:w-3/5 space-y-1 md:space-y-3">

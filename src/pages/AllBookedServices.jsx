@@ -25,8 +25,8 @@ const AllBookedServices = () => {
       <PageTitle title={`Learn Link | Booked Services`} />
       {/* header part */}
       <div
-        className="h-[200px] md:h-[300px] lg:h-[450px] bg-no-repeat bg-cover  bg-bottom overflow-hidden"
-        style={{ backgroundImage: `url(${background})` }}
+        className="h-[200px] md:h-[300px] lg:h-[450px] overflow-hidden bg-secondary/20"
+        
       >
         <div className="w-11/12 mx-auto flex items-center justify-between">
           <div className="w-1/2 md:w-3/5 space-y-1 md:space-y-3">

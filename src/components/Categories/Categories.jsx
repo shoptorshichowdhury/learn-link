@@ -20,11 +20,11 @@ const Categories = () => {
           <div className="flex gap-1 md:gap-3 items-center">
             <FaBook className="text-secondary text-sm"></FaBook>
             <p className="uppercase tracking-widest font-poppins font-bold text-secondary text-xs md:text-sm">
-              Course categories
+            categories
             </p>
           </div>
           <h3 className="text-xl md:text-4xl font-poppins text-primary font-semibold">
-            Top Category Courses
+            Course Categories
           </h3>
         </div>
         {/* view all button */}
@@ -36,7 +36,7 @@ const Categories = () => {
       </div>
 
       {/* categories container */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <CategoryCard icon={icon1} title={`Business`} />
         <CategoryCard icon={icon2} title={`Design`} />
         <CategoryCard icon={icon3} title={`Development`} />

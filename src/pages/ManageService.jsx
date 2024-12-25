@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import courseIcon from "../assets/allServiceIcon.png";
-import background from "../assets/allservicesBackground.png";
 import ManageServiceCard from "../components/ManageServiceCard/ManageServiceCard";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
@@ -68,8 +67,7 @@ const ManageService = () => {
         <PageTitle title={`Learn Link | Manage Service`} />
       {/* header part */}
       <div
-        className="h-[200px] md:h-[300px] lg:h-[450px] bg-no-repeat bg-cover  bg-top overflow-hidden"
-        style={{ backgroundImage: `url(${background})` }}
+        className="h-[200px] md:h-[300px] lg:h-[450px] bg-secondary/20 overflow-hidden"
       >
         <div className="w-11/12 mx-auto flex items-center justify-between">
           <div className="w-1/2 md:w-3/5 space-y-1 md:space-y-3">

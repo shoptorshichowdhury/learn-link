@@ -47,7 +47,7 @@ const PopularServiceCard = ({ service }) => {
 
           {/* view details button */}
           <Link to={`/services/${_id}`}>
-            <button className="btn bg-secondary border-transparent hover:bg-transparent hover:border-secondary hover:text-secondary text-sm">
+            <button className="btn bg-secondary border-transparent hover:bg-transparent hover:border-secondary hover:text-secondary text-sm text-bgColor">
               View Details
             </button>
           </Link>
