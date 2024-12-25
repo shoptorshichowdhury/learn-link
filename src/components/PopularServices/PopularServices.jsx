@@ -18,7 +18,7 @@ const PopularServices = () => {
   }, []);
 
   return (
-    <div className="w-11/12 mx-auto py-10 md:py-40 space-y-5 md:space-y-14">
+    <div className="w-11/12 mx-auto py-10 space-y-5 md:space-y-14">
       {/* top section */}
       <div className="flex justify-between items-end">
         <div className="space-y-2 md:space-y-4">

@@ -6,6 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
+import PageTitle from "../components/shared/PageTitle";
 
 const BookService = () => {
   const { id } = useParams();
@@ -73,6 +74,7 @@ const BookService = () => {
 
   return (
     <div className="bg-primary/10">
+      <PageTitle title={`Learn Link | Purchase Service`} />
       <div
         style={{ backgroundImage: `url(${background})` }}
         className="bg-no-repeat bg-cover bg-right-bottom"

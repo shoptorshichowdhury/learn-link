@@ -31,7 +31,7 @@ const PopularServiceCard = ({ service }) => {
           </p>
         </div>
         {/* 2nd part */}
-        <div className="flex gap-8 items-center">
+        <div className="flex flex-col md:flex-row gap-5 items-start md:items-center">
           {/* service provider details */}
           <div className="flex items-center gap-1 md:gap-2 bg-secondary/10 w-max px-2 md:px-4 py-1 rounded-lg">
             <div className="w-12 h-12 rounded-full">
