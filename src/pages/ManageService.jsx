@@ -5,6 +5,7 @@ import ManageServiceCard from "../components/ManageServiceCard/ManageServiceCard
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import PageTitle from "../components/shared/PageTitle";
 
 const ManageService = () => {
   const [services, setServices] = useState([]);
@@ -64,6 +65,7 @@ const ManageService = () => {
 
   return (
     <section>
+        <PageTitle title={`Learn Link | Manage Service`} />
       {/* header part */}
       <div
         className="h-[200px] md:h-[300px] lg:h-[450px] bg-no-repeat bg-cover  bg-top overflow-hidden"

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import PageTitle from "../components/shared/PageTitle";
 
 const UpdateService = () => {
   const { id } = useParams();
@@ -54,6 +55,7 @@ const UpdateService = () => {
 
   return (
     <div className="bg-primary/10">
+        <PageTitle title={`Learn Link | Update Service`}/>
       <div
         style={{ backgroundImage: `url(${background})` }}
         className="bg-no-repeat bg-cover bg-right-bottom"

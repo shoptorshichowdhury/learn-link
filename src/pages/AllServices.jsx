@@ -3,6 +3,7 @@ import courseIcon from "../assets/allServiceIcon.png";
 import ServiceCard from "../components/ServiceCard/ServiceCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PageTitle from "../components/shared/PageTitle";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
@@ -19,6 +20,7 @@ const AllServices = () => {
 
   return (
     <section>
+        <PageTitle title={`Learn Link | All Services`} />
       {/* header part */}
       <div
         className="h-[200px] md:h-[300px] lg:h-[450px] bg-no-repeat bg-cover  bg-top overflow-hidden"

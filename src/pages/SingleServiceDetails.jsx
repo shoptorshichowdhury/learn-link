@@ -5,6 +5,7 @@ import buyerImg from "../assets/banner/banner1.png";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PageTitle from "../components/shared/PageTitle";
 
 const SingleServiceDetails = () => {
   const { id } = useParams();
@@ -20,10 +21,12 @@ const SingleServiceDetails = () => {
     fetchService();
   }, [id]);
 
-  const { _id, image, name, price, area, description, serviceProvider } = service;
+  const { _id, image, name, price, area, description, serviceProvider } =
+    service;
 
   return (
     <section>
+      <PageTitle title={`Learn Link | Service Details`} />
       {/* header part */}
       <div
         className="h-[130px] md:h-[300px] bg-no-repeat bg-cover bg-top overflow-hidden"

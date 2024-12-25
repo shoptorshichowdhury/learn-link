@@ -3,6 +3,7 @@ import background from "../assets/addServiceBackground.svg";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import PageTitle from "../components/shared/PageTitle";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
@@ -42,6 +43,7 @@ const AddService = () => {
 
   return (
     <div className="bg-primary/10">
+      <PageTitle title={`Learn Link | Add Service`} />
       <div
         style={{ backgroundImage: `url(${background})` }}
         className="bg-no-repeat bg-cover bg-right-bottom"

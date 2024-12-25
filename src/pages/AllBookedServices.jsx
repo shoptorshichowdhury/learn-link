@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import BookedCard from "../components/BookedCard/BookedCard";
+import PageTitle from "../components/shared/PageTitle";
 
 const AllBookedServices = () => {
   const [services, setServices] = useState([]);
@@ -21,6 +22,7 @@ const AllBookedServices = () => {
 
   return (
     <section>
+      <PageTitle title={`Learn Link | Booked Services`} />
       {/* header part */}
       <div
         className="h-[200px] md:h-[300px] lg:h-[450px] bg-no-repeat bg-cover  bg-bottom overflow-hidden"
@@ -48,7 +50,9 @@ const AllBookedServices = () => {
 
       {/* all services container */}
       <div className="w-11/12 mx-auto py-12">
-        <h3 className="text-xl md:text-3xl font-poppins font-medium my-8 pl-4 border-l-4 border-secondary">Total Booked Course: {services.length}</h3>
+        <h3 className="text-xl md:text-3xl font-poppins font-medium my-8 pl-4 border-l-4 border-secondary">
+          Total Booked Course: {services.length}
+        </h3>
         <div className="space-y-5 md:space-y-8 my-12">
           {services.map((service) => (
             <BookedCard key={service._id} service={service} />
