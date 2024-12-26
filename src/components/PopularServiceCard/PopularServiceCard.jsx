@@ -1,13 +1,25 @@
 import demoImg from "../../assets/banner/class.jpg";
 import buyerImg from "../../assets/banner/banner1.png";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
 const PopularServiceCard = ({ service }) => {
   const { _id, image, name, price, area, description, serviceProvider } =
     service || {};
 
   return (
-    <div className="p-4 bg-gradient-to-r from-secondary/30 to-primary/20 flex flex-col md:flex-row items-center gap-5 rounded-xl text-white shadow-md">
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+        delay: 0.2,
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="p-4 bg-gradient-to-r from-secondary/30 to-primary/20 flex flex-col md:flex-row items-center gap-5 rounded-xl text-white shadow-md"
+    >
       {/* service image */}
       <div className="md:w-2/5 h-full">
         <img
@@ -24,7 +36,9 @@ const PopularServiceCard = ({ service }) => {
           <p className="font-poppins text-xl md:text-2xl text-primary font-semibold">
             {name}
           </p>
-          <p className="text-sm font-base text-primary">{description.substring(0, 100)}</p>
+          <p className="text-sm font-base text-primary">
+            {description.substring(0, 100)}
+          </p>
           {/* price  */}
           <p className="font-poppins text-primary font-medium text-base md:text-lg">
             Price: ${price}
@@ -42,7 +56,9 @@ const PopularServiceCard = ({ service }) => {
                 alt=""
               />
             </div>
-            <p className="text-sm text-primary font-medium">{serviceProvider?.name}</p>
+            <p className="text-sm text-primary font-medium">
+              {serviceProvider?.name}
+            </p>
           </div>
 
           {/* view details button */}
@@ -53,7 +69,7 @@ const PopularServiceCard = ({ service }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

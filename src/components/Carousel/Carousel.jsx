@@ -19,7 +19,7 @@ const Carousel = () => {
           "--swiper-pagination-color": "#11245A",
         }}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         spaceBetween={10}
