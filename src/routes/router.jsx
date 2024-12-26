@@ -12,12 +12,13 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import PrivateRoute from "./PrivateRoute";
 import ServiceToDo from "../pages/ServiceToDo";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <p>Error..!</p>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
