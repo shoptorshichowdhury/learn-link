@@ -7,8 +7,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
 import PageTitle from "../components/shared/PageTitle";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BookService = () => {
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [service, setService] = useState([]);
   const { user } = useContext(AuthContext);
@@ -16,9 +18,7 @@ const BookService = () => {
 
   useEffect(() => {
     const fetchService = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/services/${id}`
-      );
+      const { data } = await axiosSecure.get(`/services/${id}`);
       setService(data);
     };
     fetchService();

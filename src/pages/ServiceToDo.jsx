@@ -5,16 +5,16 @@ import { AuthContext } from "../providers/AuthProvider";
 import PageTitle from "../components/shared/PageTitle";
 import background from "../assets/allservicesBackground.png";
 import courseIcon from "../assets/allServiceIcon.png";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceToDo = () => {
+  const axiosSecure = useAxiosSecure();
   const [services, setServices] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchAllServices = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/service-to-do/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/service-to-do/${user?.email}`);
       setServices(data);
     };
     fetchAllServices();

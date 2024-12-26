@@ -5,17 +5,17 @@ import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import PageTitle from "../components/shared/PageTitle";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateService = () => {
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [service, setService] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchService = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/services/${id}`
-      );
+      const { data } = await axiosSecure.get(`/services/${id}`);
       setService(data);
     };
     fetchService();
@@ -55,7 +55,7 @@ const UpdateService = () => {
 
   return (
     <div className="bg-primary/10">
-        <PageTitle title={`Learn Link | Update Service`}/>
+      <PageTitle title={`Learn Link | Update Service`} />
       <div
         style={{ backgroundImage: `url(${background})` }}
         className="bg-no-repeat bg-cover bg-right-bottom"

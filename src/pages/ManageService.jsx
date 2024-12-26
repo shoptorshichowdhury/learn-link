@@ -5,8 +5,10 @@ import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import PageTitle from "../components/shared/PageTitle";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageService = () => {
+  const axiosSecure = useAxiosSecure();
   const [services, setServices] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -15,9 +17,7 @@ const ManageService = () => {
   }, [user]);
 
   const fetchAllServices = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/my-added-services/${user?.email}`
-    );
+    const { data } = await axiosSecure.get(`/my-added-services/${user?.email}`);
     setServices(data);
   };
 
@@ -64,11 +64,9 @@ const ManageService = () => {
 
   return (
     <section>
-        <PageTitle title={`Learn Link | Manage Service`} />
+      <PageTitle title={`Learn Link | Manage Service`} />
       {/* header part */}
-      <div
-        className="h-[200px] md:h-[300px] lg:h-[450px] bg-secondary/20 overflow-hidden"
-      >
+      <div className="h-[200px] md:h-[300px] lg:h-[450px] bg-secondary/20 overflow-hidden">
         <div className="w-11/12 mx-auto flex items-center justify-between">
           <div className="w-1/2 md:w-3/5 space-y-1 md:space-y-3">
             <h3 className="text-xl md:text-4xl lg:text-6xl font-semibold text-primary font-poppins">

@@ -4,8 +4,10 @@ import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 import PageTitle from "../components/shared/PageTitle";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddService = () => {
+  const axiosSecure = useAxiosSecure();  
   const { user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
@@ -32,7 +34,7 @@ const AddService = () => {
     };
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/services`, serviceData);
+      await axiosSecure.post(`/services`, serviceData);
       toast.success("Course Added Successfully!");
       form.reset();
     } catch (err) {
