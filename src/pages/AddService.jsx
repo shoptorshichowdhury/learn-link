@@ -34,7 +34,7 @@ const AddService = () => {
     };
 
     try {
-      await axiosSecure.post(`/services`, serviceData);
+      await axiosSecure.post(`/add-services`, serviceData);
       toast.success("Course Added Successfully!");
       form.reset();
     } catch (err) {
