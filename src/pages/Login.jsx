@@ -44,7 +44,7 @@ const Login = () => {
     <div className="py-12 bg-secondary/10">
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 shadow-lg">
         {/* form */}
-        <div className="card w-full h-full px-8 py-4 lg:px-16 lg:py-16 bg-white rounded-none">
+        <div className="card w-full h-full px-8 py-4 lg:px-16 lg:py-16 rounded-none bg-secondary/10">
           <div>
             <h3 className="text-xl md:text-3xl font-poppins my-5 font-medium">
               Login Your Account
