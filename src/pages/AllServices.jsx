@@ -45,12 +45,12 @@ const AllServices = () => {
 
       {/* all services container */}
       <div className="w-11/12 mx-auto py-12">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between md:items-center">
           <h3 className="text-xl md:text-3xl font-poppins font-medium text-primary pl-4 border-l-4 border-secondary">
             Total Course: {services.length}
           </h3>
           {/* search bar */}
-          <label className="input input-bordered flex items-center gap-2 border-2 border-secondary">
+          <label className="input flex items-center gap-2 border-2 border-secondary">
             <input
               name="search"
               value={search}
