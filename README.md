@@ -137,8 +137,6 @@ Add the following variables in your `.env` file for the backend:
 - `DB_PASS`: Database password.
 - `SECRET_KEY`: Secret key for JWT authentication.
 
----
-
 > **Note:**  
 > Make sure to keep these keys private and add them only in your `.env` file.
 
